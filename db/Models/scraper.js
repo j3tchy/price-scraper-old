@@ -13,4 +13,4 @@ const scraperSchema = mongoose.Schema({
   dateChecked: Date,
 });
 
-module.exports = mongoose.model("scraper", scraperSchema);
+module.exports = mongoose.model("scrapers", scraperSchema);
