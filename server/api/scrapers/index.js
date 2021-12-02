@@ -1,8 +1,11 @@
 const express = require("express");
-const scraper = require("../../../db/Models/scraper");
 const scraperRouter = express.Router();
 
 const Scraper = require('../../../db/Models/scraper');
+
+scraperRouter.get('/', async (req, res) => {
+  res.send('Here');
+});
 
 scraperRouter.get("/scrapers", async (req, res) => {
   const scrapers = await Scraper.find();
@@ -23,6 +26,8 @@ scraperRouter.post("/scrapers", async (req, res) => {
     latestPrice: req.body.latestPrice,
     dateChecked: new Date(),
   })
+
+  console.log(req.body);
 
   await scraper.save();
   res.send(scraper);

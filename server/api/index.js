@@ -1,6 +1,7 @@
 const express = require("express");
 const apiRouter = express.Router();
 const scraperRouter = require('./scrapers');
+const bodyParser = require('body-parser');
 
 apiRouter.use('/api', scraperRouter);
 
