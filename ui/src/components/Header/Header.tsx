@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-location";
 
 const Header = () => {
     return (
@@ -11,7 +12,9 @@ const Header = () => {
                     <span className="uppercase font-sans font-bold text-lg pl-2">Price Scraper</span>
                 </div>
                 <ul className="flex items-center justify-items-center flex-end">
-                    <li className="bg-green-500 text-white font-bold p-2 rounded">Add</li>
+                    <li className="bg-green-500 text-white font-bold p-2 rounded">
+                        <Link to='/add'>Add</Link>
+                    </li>
                 </ul>
             </div>
         </header>

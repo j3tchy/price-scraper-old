@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
-import TextField from "../TextField";
 import formConfig from "./formConfig";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { v4 as uuid } from "uuid";
 
 export interface IInputs {
     item: string,
@@ -12,36 +10,31 @@ export interface IInputs {
     latestPrice: string
 }
 
-const formValues = (formData) => {
-    return Object.keys(formData)
-        .map(key => {
-            return `${encodeURIComponent(key)}=${encodeURIComponent(formData[key])}`
-        }).join("&");
-}
-
-async function postData(formData: IInputs) {
+async function postData(formData: any) {
+    console.log(formData);
     await fetch('http://localhost:9000/api/scrapers', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/json'
         },
-        body: formValues(formData)
+        body: JSON.stringify(formData)
     }).then(res => {
-        console.log(res);
+        console.log('RESPONSE');
     })
 }
 
 const AddScaperForm = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit: SubmitHandler<IInputs> = data => {
         postData(data);
+        reset();
     };
 
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
                 {formConfig.map(({ label, name }) => (
-                    <div className="flex flex-col mb-3">
+                    <div className="flex flex-col mb-3" key={uuid()}>
                         <label>{label}</label>
                         <input
                             type="text"

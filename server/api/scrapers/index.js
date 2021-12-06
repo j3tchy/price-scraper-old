@@ -20,7 +20,7 @@ scraperRouter.get("/scrapers/:scraperId", async (req, res) => {
 scraperRouter.post("/scrapers", async (req, res) => {
   const scraper = new Scraper({
     item: req.body.item,
-    originalPrice: req.body.price,
+    originalPrice: req.body.originalPrice,
     url:req.body.url,
     image: req.body.image,
     latestPrice: req.body.latestPrice,

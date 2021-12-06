@@ -10,7 +10,7 @@ export default [
         name: "url"
     }, {
         label: "Image",
-        name: "img",
+        name: "image",
     }, {
         label: "Latest Price",
         name: "latestPrice"
