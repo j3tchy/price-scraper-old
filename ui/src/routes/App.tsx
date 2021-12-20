@@ -6,6 +6,7 @@ import {
 } from "react-location";
 import Header from "../components/Header/Header";
 import AddScaperForm from "../components/AddScraperForm/AddScraperForm";
+import Home from "../routes/Home";
 
 const Index = () => <p>Index</p>;
 
@@ -25,10 +26,10 @@ const App = () => {
           routes={[
             {
               path: '/',
-              element: <Index />,
+              element: <Home />,
               loader: async () => {
                 return {
-                  data: await getScrapers()
+                  scrapers: await getScrapers()
                 }
               }
             },
@@ -36,7 +37,7 @@ const App = () => {
           ]}
         >
         <Header />
-        <div className="container mx-auto py-6" style={{ maxWidth: "600px" }}>
+        <div className="container mx-auto py-6" style={{ maxWidth: "900px" }}>
           <Outlet />
         </div>
       </Router>
